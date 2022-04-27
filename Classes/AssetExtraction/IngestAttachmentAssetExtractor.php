@@ -92,7 +92,7 @@ class IngestAttachmentAssetExtractor implements AssetExtractorInterface
             ]
         ];
 
-        $result = $this->elasticsearchClient->request('POST', '_ingest/pipeline/_simulate', [], json_encode($request))->getTreatedContent();
+        $result = $this->elasticsearchClient->request('POST', '/_ingest/pipeline/_simulate', [], json_encode($request))->getTreatedContent();
 
         if (is_array($result)) {
             $extractedAsset = Arrays::getValueByPath($result, 'docs.0.doc._source.attachment');
